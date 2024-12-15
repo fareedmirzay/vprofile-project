@@ -27,7 +27,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn -s settings.xml -DskipTests install'
+                sh 'menve81 -s settings.xml -DskipTests install'
             }
             post {
                 success {
