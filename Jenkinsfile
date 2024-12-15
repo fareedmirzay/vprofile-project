@@ -52,9 +52,7 @@ pipeline {
             steps {
                 withSonarQubeEnv("${SONARSERVER}") {
             // Add JVM options and exclude JavaScript files
-            sh '''export JAVA_OPTS="--add-opens java.base/java.lang=ALL-UNNAMED \
-            --add-opens java.base/java.lang.reflect=ALL-UNNAMED \
-            --add-opens java.base/java.util=ALL-UNNAMED"
+            sh '''export JAVA_OPTS="--add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.lang.reflect=ALL-UNNAMED"
             ${scannerHome}/bin/sonar-scanner \
             -Dsonar.projectKey=vprofile \
             -Dsonar.projectName=vprofile \
@@ -65,6 +63,7 @@ pipeline {
             -Dsonar.jacoco.reportsPath=target/jacoco.exec \
             -Dsonar.java.checkstyle.reportPaths=target/checkstyle-result.xml \
             -Dsonar.exclusions=**/*.js,**/*.jsx'''
+        
         }
             }
         }
